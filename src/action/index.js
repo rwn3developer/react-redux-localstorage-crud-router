@@ -11,3 +11,17 @@ export const Deletedata = (id) => {
         payload : id
     }
 }
+
+export const Edittime = (id) => {
+    return {
+        type : "EDIT_TIME",
+        payload : id
+    }
+}
+
+export const Update = (data) => {
+    return {
+        type : "UPDATE_DATA",
+        payload : data
+    }
+}

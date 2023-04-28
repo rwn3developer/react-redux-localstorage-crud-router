@@ -29,6 +29,12 @@ const Add = () => {
             password : password
         }
         dispatch(Adddata(obj));
+        alert("record successfully Add");
+        setInput({
+            name : '',
+            email : '',
+            password : ''
+        })
     }
 
     return (

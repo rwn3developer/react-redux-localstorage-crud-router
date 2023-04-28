@@ -1,5 +1,6 @@
 const initialState = {
-    data : localStorage.getItem('crud') ? JSON.parse(localStorage.getItem('crud')) : []
+    data : localStorage.getItem('crud') ? JSON.parse(localStorage.getItem('crud')) : [],
+    user : {}
 }
 
 const crud = (state = initialState,action) =>
@@ -24,6 +25,38 @@ const crud = (state = initialState,action) =>
                     ...state,
                     data : drecord
                 }
+            break;
+
+            case "EDIT_TIME" : 
+                    let editr = state.data.filter((val)=>{
+                       if(val.id == action.payload){
+                            return val;
+                       }
+                    })
+                    return {
+                        ...state,
+                        user : editr[0]
+                    }
+                    return state;
+            break;
+
+            case "UPDATE_DATA" : 
+                    let update = state.data.map((val)=>{
+                        if(val.id == action.payload.id){ 
+                            return {
+                                ...val,
+                                name : action.payload.name,
+                                email : action.payload.email,
+                                password : action.payload.password,
+                            }
+                        }
+                        return val;
+                    })
+                    localStorage.setItem('crud',JSON.stringify(update));
+                    return {
+                        ...state,
+                        data : update
+                    };
             break;
 
             default : 

@@ -37,6 +37,7 @@ const View = () => {
                                     <td>
                                         <button><Link to='/add'>Add</Link></button> || 
                                         <button onClick={ () => deletedata(val.id) }>Delete</button> || 
+                                        <button><Link to={`/edit/${val.id}`}>Edit</Link></button>
                                     </td>
                                 </tr>
                             )
